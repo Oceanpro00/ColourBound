@@ -45,23 +45,165 @@ inkDark     = (52, 37, 79)
 
 */
 
+// Global Variables
+let bridgeLayer;     // define the new drawable layer
+
+
 function setup()
 {
 	createCanvas(2000, 1000);
+	bridgeLayer = createGraphics(2000, 1000);     // creates another drawable layer (figuring it out)
 }
 
 function draw()
 {
 	background(132, 208, 207); 
-	noStroke();
 
+	styled_background();
 
-	bridge();
+	bridge();     // updates the new layer
+	image(bridgeLayer, 0, 0);     // shows the new layer
+
+	waterfall();
 	
 
+
+	// helpful mouse pointer brought in from sleuth
+	push();
+		fill(0);
+		noStroke();
+		text(mouseX + "," + mouseY, mouseX, mouseY);
+	pop();
+}
+
+function styled_background(){
+	//Sun/ Moon
+	fill(247, 204, 142);
+	ellipse(1000, 350, 500, 500);
+
+	noFill();
+	stroke(247, 204, 142);
+	strokeWeight(20);
+	arc(1000, 350, 550, 550, radians(150), radians(200));
+	arc(1000, 350, 550, 550, radians(210), radians(270));
+	arc(1000, 350, 550, 550, radians(280), radians(310));
+	arc(1000, 350, 550, 550, radians(320), radians(30));
+	arc(1000, 350, 550, 550, radians(40), radians(140));
+
+	strokeWeight(10);
+	arc(1000, 350, 595, 595, radians(40), radians(140));
+	arc(1000, 350, 595, 595, radians(150), radians(210));
+	arc(1000, 350, 595, 595, radians(220), radians(240));
+	arc(1000, 350, 595, 595, radians(250), radians(260));
+	arc(1000, 350, 595, 595, radians(270), radians(320));
+	arc(1000, 350, 595, 595, radians(330), radians(30));
+
+	arc(1000, 350, 650, 650, radians(10), radians(70));
+	arc(1000, 350, 650, 650, radians(80), radians(130));
+	arc(1000, 350, 650, 650, radians(140), radians(200));
+	arc(1000, 350, 650, 650, radians(210), radians(250));
+	arc(1000, 350, 650, 650, radians(260), radians(310));
+	arc(1000, 350, 650, 650, radians(320), radians(370));
+
+}
+
+
+function bridge(){
+	// Background bridge scape
+	bridgeLayer.noStroke();
+	bridgeLayer.fill(152, 119, 194);
+	bridgeLayer.rect(0, 395, 2000, 20);
+	bridgeLayer.rect(795, 365, 110, 110, 55);
+	bridgeLayer.rect(1095, 365, 110, 110, 55);
+	
+	bridgeLayer.fill(123, 91, 176);
+	bridgeLayer.rect(0, 400, 900, 500);
+	bridgeLayer.rect(800, 370, 100, 100, 50);
+	bridgeLayer.rect(1100, 400, 900, 500);
+	bridgeLayer.rect(1100, 370, 100, 100, 50);
+
+	//Bricks
+	bridgeLayer.fill(152, 119, 194);
+	bridgeLayer.rect(150, 475, 40, 15, 5);
+	bridgeLayer.rect(192, 475, 40, 15, 5);
+	bridgeLayer.rect(171, 492, 40, 15, 5);
+
+	bridgeLayer.rect(280, 650, 40, 15, 5);
+	bridgeLayer.rect(322, 650, 40, 15, 5);
+	bridgeLayer.rect(301, 667, 40, 15, 5);
+
+	bridgeLayer.rect(419, 473, 40, 15, 5);
+	bridgeLayer.rect(440, 490, 40, 15, 5);
+	bridgeLayer.rect(398, 490, 40, 15, 5);
+
+	bridgeLayer.rect(1330, 460, 40, 15, 5);
+	bridgeLayer.rect(1372, 460, 40, 15, 5);
+	bridgeLayer.rect(1351, 477, 40, 15, 5);
+
+	bridgeLayer.rect(1690, 500, 40, 15, 5);
+	bridgeLayer.rect(1669, 517, 40, 15, 5);
+	bridgeLayer.rect(1711, 517, 40, 15, 5);
+
+	bridgeLayer.rect(1779, 643, 40, 15, 5);
+	bridgeLayer.rect(1821, 643, 40, 15, 5);
+	bridgeLayer.rect(1800, 660, 40, 15, 5);
+
+	// Was able to fix layer issue by splitting layers into their own functions
+	//Arches
+	bridgeLayer.erase();
+	bridgeLayer.arc(0, 720, 350, 450, PI, 2*PI);
+	bridgeLayer.arc(500, 720, 350, 450, PI, 2*PI);
+	bridgeLayer.rect(0, 720, 675, 280);
+	bridgeLayer.arc(2000, 720, 350, 450, PI, 2*PI);
+	bridgeLayer.arc(1500, 720, 350, 450, PI, 2*PI);
+	bridgeLayer.rect(1325, 720, 675, 280);
+	bridgeLayer.noErase();
+
+	// Collumns
+	bridgeLayer.fill(94, 66, 148);
+	bridgeLayer.rect(185, 720, 130, 20);
+	bridgeLayer.rect(190, 740, 120, 20);
+	bridgeLayer.rect(195, 760, 110, 140);
+	bridgeLayer.rect(1685, 720, 130, 20);
+	bridgeLayer.rect(1690, 740, 120, 20);
+	bridgeLayer.rect(1695, 760, 110, 140);
+
+	bridgeLayer.fill(123, 91, 176);
+	bridgeLayer.rect(188, 723, 127, 17);
+	bridgeLayer.rect(193, 743, 117, 17);
+	bridgeLayer.rect(198, 763, 107, 137);
+	bridgeLayer.rect(1688, 723, 127, 17);
+	bridgeLayer.rect(1693, 743, 117, 17);
+	bridgeLayer.rect(1698, 763, 107, 137);
+
+	bridgeLayer.fill(94, 66, 148);
+	bridgeLayer.rect(204, 767, 4, 127, 5);
+	bridgeLayer.rect(214, 767, 4, 127, 5);
+	bridgeLayer.rect(224, 767, 4, 127, 5);
+	bridgeLayer.rect(234, 767, 4, 127, 5);
+	bridgeLayer.rect(244, 767, 4, 127, 5);
+	bridgeLayer.rect(254, 767, 4, 127, 5);
+	bridgeLayer.rect(264, 767, 4, 127, 5);
+	bridgeLayer.rect(274, 767, 4, 127, 5);
+	bridgeLayer.rect(284, 767, 4, 127, 5);
+	bridgeLayer.rect(294, 767, 4, 127, 5);
+	bridgeLayer.rect(1704, 767, 4, 127, 5);
+	bridgeLayer.rect(1714, 767, 4, 127, 5);
+	bridgeLayer.rect(1724, 767, 4, 127, 5);
+	bridgeLayer.rect(1734, 767, 4, 127, 5);
+	bridgeLayer.rect(1744, 767, 4, 127, 5);
+	bridgeLayer.rect(1754, 767, 4, 127, 5);
+	bridgeLayer.rect(1764, 767, 4, 127, 5);
+	bridgeLayer.rect(1774, 767, 4, 127, 5);
+	bridgeLayer.rect(1784, 767, 4, 127, 5);
+	bridgeLayer.rect(1794, 767, 4, 127, 5);
+}
+
+function waterfall(){
 	// Waterfall
 	fill(222, 108, 144);
-	rect(880, 390, 240, 510, 20)
+	noStroke();
+	rect(880, 390, 240, 510, 20);
 
 	fill(241, 145, 170);
 	rect(880, 460, 20, 100, 10);
@@ -119,104 +261,4 @@ function draw()
 	
 	// lake
 	rect(0, 900, 2000, 100);
-	
-
-
-	// helpful mouse pointer brought in from sleuth
-	push();
-		fill(0);
-		noStroke();
-		text(mouseX + "," + mouseY, mouseX, mouseY);
-	pop();
-}
-
-
-function bridge(){
-	// Background bridge scape
-	fill(152, 119, 194);
-	rect(0, 395, 2000, 20);
-	rect(795, 365, 110, 110, 55);
-	rect(1095, 365, 110, 110, 55);
-	
-	fill(123, 91, 176);
-	rect(0, 400, 900, 500);
-	rect(800, 370, 100, 100, 50);
-	rect(1100, 400, 900, 500);
-	rect(1100, 370, 100, 100, 50);
-
-	//Bricks
-	fill(152, 119, 194);
-	rect(150, 475, 40, 15, 5);
-	rect(192, 475, 40, 15, 5);
-	rect(171, 492, 40, 15, 5);
-
-	rect(280, 650, 40, 15, 5);
-	rect(322, 650, 40, 15, 5);
-	rect(301, 667, 40, 15, 5);
-
-	rect(419, 473, 40, 15, 5);
-	rect(440, 490, 40, 15, 5);
-	rect(398, 490, 40, 15, 5);
-
-	rect(1330, 460, 40, 15, 5);
-	rect(1372, 460, 40, 15, 5);
-	rect(1351, 477, 40, 15, 5);
-
-	rect(1690, 500, 40, 15, 5);
-	rect(1669, 517, 40, 15, 5);
-	rect(1711, 517, 40, 15, 5);
-
-	rect(1779, 643, 40, 15, 5);
-	rect(1821, 643, 40, 15, 5);
-	rect(1800, 660, 40, 15, 5);
-
-	// Was able to fix layer issue by splitting layers into their own functions
-	//Arches
-	erase();
-	arc(0, 720, 350, 450, PI, 2*PI);
-	arc(500, 720, 350, 450, PI, 2*PI);
-	rect(0, 720, 675, 280);
-	arc(2000, 720, 350, 450, PI, 2*PI);
-	arc(1500, 720, 350, 450, PI, 2*PI);
-	rect(1325, 720, 675, 280);
-	noErase();
-
-	// Collumns
-	fill(94, 66, 148);
-	rect(185, 720, 130, 20);
-	rect(190, 740, 120, 20);
-	rect(195, 760, 110, 140);
-	rect(1685, 720, 130, 20);
-	rect(1690, 740, 120, 20);
-	rect(1695, 760, 110, 140);
-
-	fill(123, 91, 176);
-	rect(188, 723, 127, 17);
-	rect(193, 743, 117, 17);
-	rect(198, 763, 107, 137);
-	rect(1688, 723, 127, 17);
-	rect(1693, 743, 117, 17);
-	rect(1698, 763, 107, 137);
-
-	fill(94, 66, 148);
-	rect(204, 767, 4, 127, 5);
-	rect(214, 767, 4, 127, 5);
-	rect(224, 767, 4, 127, 5);
-	rect(234, 767, 4, 127, 5);
-	rect(244, 767, 4, 127, 5);
-	rect(254, 767, 4, 127, 5);
-	rect(264, 767, 4, 127, 5);
-	rect(274, 767, 4, 127, 5);
-	rect(284, 767, 4, 127, 5);
-	rect(294, 767, 4, 127, 5);
-	rect(1704, 767, 4, 127, 5);
-	rect(1714, 767, 4, 127, 5);
-	rect(1724, 767, 4, 127, 5);
-	rect(1734, 767, 4, 127, 5);
-	rect(1744, 767, 4, 127, 5);
-	rect(1754, 767, 4, 127, 5);
-	rect(1764, 767, 4, 127, 5);
-	rect(1774, 767, 4, 127, 5);
-	rect(1784, 767, 4, 127, 5);
-	rect(1794, 767, 4, 127, 5);
 }
