@@ -47,7 +47,9 @@ inkDark     = (52, 37, 79)
 
 // Global Variables   // define the new drawable layers
 let backdrop;
-let bridgeLayer;     
+let bridgeLayer;
+
+// Colors
 
 
 function setup()
