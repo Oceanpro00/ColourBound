@@ -12,36 +12,8 @@ almost like the start of a quiet journey. The player moves across (hopefully) na
 platforms aiming to collect colors and reach a doorway/ending point.
 
 colors:
-// Bubblegum Pink
-pinkLight = (248, 184, 198)
-pinkMain  = (241, 145, 170)
-pinkDark  = (222, 108, 144)
+// Lavender Vaporwave Palette (sourced from color.adobe.com and adapted into rgb)
 
-// Apricot Yellow
-apricotLight = (250, 225, 184)
-apricotMain  = (247, 204, 142)
-apricotDark  = (232, 171, 102)
-
-// Lavender    // thinking this may be too similar to the deep plum...
-lavenderLight = (217, 196, 240)
-lavenderMain  = (190, 160, 228)
-lavenderDark  = (151, 117, 206)
-
-// Teal
-tealLight = (182, 229, 227)
-tealMain  = (132, 208, 207)
-tealDark  = (78, 168, 174)
-
-// Deep Plum
-plumLight = (152, 119, 194)
-plumMain  = (123, 91, 176)
-plumDark  = (94, 66, 148)
-
-// Support Colours
-warmCream   = (250, 238, 221)
-paperCream  = (247, 237, 228)
-outlineDark = (76, 58, 102)
-inkDark     = (52, 37, 79)
 
 */
 
@@ -49,29 +21,95 @@ inkDark     = (52, 37, 79)
 let backdrop;
 let bridgeLayer;
 
+// colors
+
+
+// Yellow
+let yellowLight;
+let yellowMain;
+let yellowDark;
+
+// Orange
+let orangeLight;
+let orangeMain;
+let orangedark;
+
+// Pastel Pink
+let pinkLight;
+let pinkMain;
+let pinkDark;
+
+// Purple
+let purpleLight;
+let purpleMain;
+let purpleDark;
+
+// Teal
+let tealLight;
+let tealMain;
+let tealDark;
+
+// Support Colours
+let warmCream;
+let paperCream;
+let outlineDark;
+let navyDark;
+
 
 function setup()
 {
 	createCanvas(2000, 1000);
 	bridgeLayer = createGraphics(2000, 1000);     // creates another drawable layer (figuring it out)
+
+	// colors
+	// Yellow
+	yellowLight = color(255, 226, 119);
+	yellowMain = color(242, 205, 92);
+	yellowDark = color(202, 159, 42);
+
+	// Orange
+	orangeLight = color(255, 183, 102);
+	orangeMain = color(255, 128, 64);
+	orangeDark = color(204, 74, 32);
+
+	// Pink
+	pinkLight = color(235, 107, 161);
+	pinkMain = color(217, 65, 121);
+	pinkDark = color(165, 38, 88);
+
+	// Purple
+	purpleLight = color(152, 119, 194)
+	purpleMain = color(123, 91, 176)
+	purpleDark = color(94, 66, 148)
+
+	// Teal Blue
+	tealLight = color(82, 184, 184);
+	tealMain = color(35, 135, 154);
+	tealDark = color(18, 86, 112);
+
+	// Supporting Colors
+	warmCream = color(250, 238, 221)
+	paperCream = color(247, 237, 228)
+	outlineDark = color(76, 58, 102)
+	navyDark = color(1, 6, 38)
+
 }
 
 function draw()
 {
-	background(52, 37, 79); 
+	background(tealLight); 
 
 	// Sky/ BG
 	styled_background();
 
-	// lake
-	rect(0, 900, 2000, 100);
+	
 
 	// Bridge + Waterfall Scaled/ Multiplied
 	push();
 
 		// Transform
 		scale(0.5);
-		translate(0, 1300);
+		translate(0, 1370);
 	
 		// Bridge
 		bridge();     // updates the new layer
@@ -85,7 +123,7 @@ function draw()
 
 		// Transform
 		scale(0.5);
-		translate(2000, 1300);
+		translate(2000, 1370);
 	
 		// Bridge
 		bridge();     // updates the new layer
@@ -94,8 +132,10 @@ function draw()
 		waterfall();
 
 	pop();
-	
 
+	// lake
+	fill(orangeMain);
+	rect(0, 950, 2000, 100);
 
 	// helpful mouse pointer brought in from sleuth
 	push();
@@ -110,12 +150,12 @@ function styled_background(){
 	noStroke();
 
 	//Sun/ Moon
-	fill(247, 204, 142);
+	fill(yellowLight);
 	ellipse(1000, 350, 500, 500);
 
 	// Sun/ Moon Rays
 	noFill();
-	stroke(247, 204, 142);
+	stroke(yellowLight);
 	strokeWeight(20);
 	arc(1000, 350, 544, 544, radians(150), radians(200));
 	arc(1000, 350, 544, 544, radians(210), radians(270));
@@ -189,7 +229,7 @@ function styled_background(){
 
 	// moutains
 	noStroke();
-	fill(190, 160, 228);
+	fill(pinkMain);
 	beginShape();
 	vertex(0, 670);
 	vertex(570, 400);
@@ -201,7 +241,7 @@ function styled_background(){
 	vertex(0, 1000);
 	endShape();
 
-	fill(151, 117, 206);
+	fill(pinkDark);
 	beginShape();
 	vertex(0, 670);
 	vertex(275, 540);
@@ -229,7 +269,7 @@ function styled_background(){
 	vertex(0, 1000);
 	endShape();
 
-	fill(217, 196, 240);
+	fill(pinkLight);
 	quad(570, 400, 790, 470, 1190, 713, 767, 480);
 	quad(1250, 750, 1350, 715, 1755, 460, 1825, 413);
 
@@ -241,19 +281,19 @@ function bridge(){
 	bridgeLayer.noStroke();
 
 	// Background bridge scape
-	bridgeLayer.fill(152, 119, 194);
+	bridgeLayer.fill(purpleLight);
 	bridgeLayer.rect(0, 30, 2000, 20);
 	bridgeLayer.rect(795, 0, 110, 110, 55);
 	bridgeLayer.rect(1095, 0, 110, 110, 55);
 	
-	bridgeLayer.fill(123, 91, 176);
+	bridgeLayer.fill(purpleMain);
 	bridgeLayer.rect(0, 35, 900, 500);
 	bridgeLayer.rect(800, 5, 100, 100, 50);
 	bridgeLayer.rect(1100, 35, 900, 500);
 	bridgeLayer.rect(1100, 5, 100, 100, 50);
 
 	//Bricks
-	bridgeLayer.fill(152, 119, 194);
+	bridgeLayer.fill(purpleLight);
 	bridgeLayer.rect(150, 110, 40, 15, 5);
 	bridgeLayer.rect(192, 110, 40, 15, 5);
 	bridgeLayer.rect(171, 127, 40, 15, 5);
@@ -290,7 +330,7 @@ function bridge(){
 	bridgeLayer.noErase();
 
 	// Collumns
-	bridgeLayer.fill(94, 66, 148);
+	bridgeLayer.fill(purpleDark);
 	bridgeLayer.rect(185, 355, 130, 20);
 	bridgeLayer.rect(190, 375, 120, 20);
 	bridgeLayer.rect(195, 395, 110, 140);
@@ -298,7 +338,7 @@ function bridge(){
 	bridgeLayer.rect(1690, 375, 120, 20);
 	bridgeLayer.rect(1695, 395, 110, 140);
 
-	bridgeLayer.fill(123, 91, 176);
+	bridgeLayer.fill(purpleMain);
 	bridgeLayer.rect(188, 358, 127, 17);
 	bridgeLayer.rect(193, 378, 117, 17);
 	bridgeLayer.rect(198, 398, 107, 137);
@@ -306,7 +346,7 @@ function bridge(){
 	bridgeLayer.rect(1693, 378, 117, 17);
 	bridgeLayer.rect(1698, 398, 107, 137);
 
-	bridgeLayer.fill(94, 66, 148);
+	bridgeLayer.fill(purpleDark);
 	bridgeLayer.rect(204, 402, 4, 127, 5);
 	bridgeLayer.rect(214, 402, 4, 127, 5);
 	bridgeLayer.rect(224, 402, 4, 127, 5);
@@ -334,10 +374,10 @@ function waterfall(){
 	noStroke();
 
 	// Waterfall
-	fill(222, 108, 144);      // localised coordinates adjusted to match bridge
+	fill(orangeMain);      // localised coordinates adjusted to match bridge
 	rect(880, 25, 240, 510, 20);
 
-	fill(241, 145, 170);
+	fill(orangeLight);
 	rect(880, 95, 20, 100, 10);
 	rect(900, 125, 20, 40, 10);
 	rect(920, 85, 20, 80, 10);
@@ -377,7 +417,7 @@ function waterfall(){
 	rect(1080, 425, 20, 30, 10);
 	rect(1100, 435, 20, 80, 10);
 
-	fill(222, 108, 144);
+	fill(orangeMain);
 	rect(900, 105, 20, 40, 10);
 	rect(960, 65, 20, 70, 10);
 	rect(1060, 45, 20, 70, 10);

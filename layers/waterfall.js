@@ -28,10 +28,10 @@ function waterfall(){
 	noStroke();
 
 	// Waterfall
-	fill(222, 108, 144);      // localised coordinates adjusted to match bridge
+	fill(orangeMain);      // localised coordinates adjusted to match bridge
 	rect(880, 25, 240, 510, 20);
 
-	fill(241, 145, 170);
+	fill(orangeLight);
 	rect(880, 95, 20, 100, 10);
 	rect(900, 125, 20, 40, 10);
 	rect(920, 85, 20, 80, 10);
@@ -71,7 +71,7 @@ function waterfall(){
 	rect(1080, 425, 20, 30, 10);
 	rect(1100, 435, 20, 80, 10);
 
-	fill(222, 108, 144);
+	fill(orangeMain);
 	rect(900, 105, 20, 40, 10);
 	rect(960, 65, 20, 70, 10);
 	rect(1060, 45, 20, 70, 10);

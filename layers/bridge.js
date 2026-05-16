@@ -27,20 +27,20 @@ function bridge(){
 	// Setup
 	bridgeLayer.noStroke();
 
-	// Background bridge scape
-	bridgeLayer.fill(152, 119, 194);
+	// Background bridge main rects shapes
+	bridgeLayer.fill(purpleLight);
 	bridgeLayer.rect(0, 30, 2000, 20);
 	bridgeLayer.rect(795, 0, 110, 110, 55);
 	bridgeLayer.rect(1095, 0, 110, 110, 55);
 	
-	bridgeLayer.fill(123, 91, 176);
+	bridgeLayer.fill(purpleMain);
 	bridgeLayer.rect(0, 35, 900, 500);
 	bridgeLayer.rect(800, 5, 100, 100, 50);
 	bridgeLayer.rect(1100, 35, 900, 500);
 	bridgeLayer.rect(1100, 5, 100, 100, 50);
 
 	//Bricks
-	bridgeLayer.fill(152, 119, 194);
+	bridgeLayer.fill(purpleLight);
 	bridgeLayer.rect(150, 110, 40, 15, 5);
 	bridgeLayer.rect(192, 110, 40, 15, 5);
 	bridgeLayer.rect(171, 127, 40, 15, 5);
@@ -77,7 +77,7 @@ function bridge(){
 	bridgeLayer.noErase();
 
 	// Collumns
-	bridgeLayer.fill(94, 66, 148);
+	bridgeLayer.fill(purpleDark);
 	bridgeLayer.rect(185, 355, 130, 20);
 	bridgeLayer.rect(190, 375, 120, 20);
 	bridgeLayer.rect(195, 395, 110, 140);
@@ -85,7 +85,7 @@ function bridge(){
 	bridgeLayer.rect(1690, 375, 120, 20);
 	bridgeLayer.rect(1695, 395, 110, 140);
 
-	bridgeLayer.fill(123, 91, 176);
+	bridgeLayer.fill(purpleMain);
 	bridgeLayer.rect(188, 358, 127, 17);
 	bridgeLayer.rect(193, 378, 117, 17);
 	bridgeLayer.rect(198, 398, 107, 137);
@@ -93,7 +93,7 @@ function bridge(){
 	bridgeLayer.rect(1693, 378, 117, 17);
 	bridgeLayer.rect(1698, 398, 107, 137);
 
-	bridgeLayer.fill(94, 66, 148);
+	bridgeLayer.fill(purpleDark);
 	bridgeLayer.rect(204, 402, 4, 127, 5);
 	bridgeLayer.rect(214, 402, 4, 127, 5);
 	bridgeLayer.rect(224, 402, 4, 127, 5);
