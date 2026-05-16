@@ -58,7 +58,7 @@ function setup()
 
 function draw()
 {
-	background(132, 208, 207); 
+	background(52, 37, 79); 
 
 	// Sky/ BG
 	styled_background();
@@ -191,47 +191,47 @@ function styled_background(){
 	noStroke();
 	fill(190, 160, 228);
 	beginShape();
-	vertex(0, 470);
-	vertex(570, 200);
-	vertex(790, 270);
-	vertex(1250, 550);
-	vertex(1850, 200);
-	vertex(2000, 350);
+	vertex(0, 670);
+	vertex(570, 400);
+	vertex(790, 470);
+	vertex(1250, 750);
+	vertex(1850, 400);
+	vertex(2000, 550);
 	vertex(2000, 1000);
 	vertex(0, 1000);
 	endShape();
 
 	fill(151, 117, 206);
 	beginShape();
-	vertex(0, 470);
-	vertex(275, 340);
-	vertex(650, 520);
-	vertex(310, 324);
-	vertex(387, 286);
-	vertex(650, 420);
-	vertex(418, 272);
-	vertex(487, 240);
-	vertex(1121, 580);
-	vertex(675, 300);
-	vertex(1180, 550);
-	vertex(1250, 555);
-	vertex(1370, 550);
-	vertex(1480, 480);
-	vertex(1570, 450);
-	vertex(1710, 530);
-	vertex(1595, 433);
-	vertex(1735, 312);
-	vertex(1806, 350);
-	vertex(1759, 299);
-	vertex(1863, 225);
-	vertex(2000, 350);
+	vertex(0, 670);
+	vertex(275, 540);
+	vertex(650, 720);
+	vertex(310, 524);
+	vertex(387, 486);
+	vertex(650, 620);
+	vertex(418, 472);
+	vertex(487, 440);
+	vertex(1121, 780);
+	vertex(675, 500);
+	vertex(1180, 750);
+	vertex(1250, 755);
+	vertex(1370, 750);
+	vertex(1480, 680);
+	vertex(1570, 650);
+	vertex(1710, 730);
+	vertex(1595, 633);
+	vertex(1735, 512);
+	vertex(1806, 550);
+	vertex(1759, 499);
+	vertex(1863, 425);
+	vertex(2000, 550);
 	vertex(2000, 1000);
 	vertex(0, 1000);
 	endShape();
 
 	fill(217, 196, 240);
-	quad(570, 200, 790, 270, 1185, 512, 767, 280);
-	quad(1250, 550, 1350, 530, 1755, 260, 1825, 213);
+	quad(570, 400, 790, 470, 1190, 713, 767, 480);
+	quad(1250, 750, 1350, 715, 1755, 460, 1825, 413);
 
 }
 
