@@ -2,9 +2,6 @@
 let backdrop;
 let bridgeLayer;
 
-// Colors
-
-
 function setup()
 {
 	createCanvas(2000, 1000);

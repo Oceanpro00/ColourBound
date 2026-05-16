@@ -49,8 +49,6 @@ inkDark     = (52, 37, 79)
 let backdrop;
 let bridgeLayer;
 
-// Colors
-
 
 function setup()
 {
@@ -62,12 +60,40 @@ function draw()
 {
 	background(132, 208, 207); 
 
+	// Sky/ BG
 	styled_background();
 
-	bridge();     // updates the new layer
-	image(bridgeLayer, 0, 0);     // shows the new layer
+	// lake
+	rect(0, 900, 2000, 100);
 
-	waterfall();
+	// Bridge + Waterfall Scaled/ Multiplied
+	push();
+
+		// Transform
+		scale(0.5);
+		translate(0, 1300);
+	
+		// Bridge
+		bridge();     // updates the new layer
+		image(bridgeLayer, 0, 0);     // shows the new layer
+		// Waterfall
+		waterfall();
+
+	pop();
+
+	push();
+
+		// Transform
+		scale(0.5);
+		translate(2000, 1300);
+	
+		// Bridge
+		bridge();     // updates the new layer
+		image(bridgeLayer, 0, 0);     // shows the new layer
+		// Waterfall
+		waterfall();
+
+	pop();
 	
 
 
@@ -216,91 +242,91 @@ function bridge(){
 
 	// Background bridge scape
 	bridgeLayer.fill(152, 119, 194);
-	bridgeLayer.rect(0, 395, 2000, 20);
-	bridgeLayer.rect(795, 365, 110, 110, 55);
-	bridgeLayer.rect(1095, 365, 110, 110, 55);
+	bridgeLayer.rect(0, 30, 2000, 20);
+	bridgeLayer.rect(795, 0, 110, 110, 55);
+	bridgeLayer.rect(1095, 0, 110, 110, 55);
 	
 	bridgeLayer.fill(123, 91, 176);
-	bridgeLayer.rect(0, 400, 900, 500);
-	bridgeLayer.rect(800, 370, 100, 100, 50);
-	bridgeLayer.rect(1100, 400, 900, 500);
-	bridgeLayer.rect(1100, 370, 100, 100, 50);
+	bridgeLayer.rect(0, 35, 900, 500);
+	bridgeLayer.rect(800, 5, 100, 100, 50);
+	bridgeLayer.rect(1100, 35, 900, 500);
+	bridgeLayer.rect(1100, 5, 100, 100, 50);
 
 	//Bricks
 	bridgeLayer.fill(152, 119, 194);
-	bridgeLayer.rect(150, 475, 40, 15, 5);
-	bridgeLayer.rect(192, 475, 40, 15, 5);
-	bridgeLayer.rect(171, 492, 40, 15, 5);
+	bridgeLayer.rect(150, 110, 40, 15, 5);
+	bridgeLayer.rect(192, 110, 40, 15, 5);
+	bridgeLayer.rect(171, 127, 40, 15, 5);
 
-	bridgeLayer.rect(280, 650, 40, 15, 5);
-	bridgeLayer.rect(322, 650, 40, 15, 5);
-	bridgeLayer.rect(301, 667, 40, 15, 5);
+	bridgeLayer.rect(280, 285, 40, 15, 5);
+	bridgeLayer.rect(322, 285, 40, 15, 5);
+	bridgeLayer.rect(301, 302, 40, 15, 5);
 
-	bridgeLayer.rect(419, 473, 40, 15, 5);
-	bridgeLayer.rect(440, 490, 40, 15, 5);
-	bridgeLayer.rect(398, 490, 40, 15, 5);
+	bridgeLayer.rect(419, 108, 40, 15, 5);
+	bridgeLayer.rect(440, 125, 40, 15, 5);
+	bridgeLayer.rect(398, 125, 40, 15, 5);
 
-	bridgeLayer.rect(1330, 460, 40, 15, 5);
-	bridgeLayer.rect(1372, 460, 40, 15, 5);
-	bridgeLayer.rect(1351, 477, 40, 15, 5);
+	bridgeLayer.rect(1330, 95, 40, 15, 5);
+	bridgeLayer.rect(1372, 95, 40, 15, 5);
+	bridgeLayer.rect(1351, 112, 40, 15, 5);
 
-	bridgeLayer.rect(1690, 500, 40, 15, 5);
-	bridgeLayer.rect(1669, 517, 40, 15, 5);
-	bridgeLayer.rect(1711, 517, 40, 15, 5);
+	bridgeLayer.rect(1690, 135, 40, 15, 5);
+	bridgeLayer.rect(1669, 152, 40, 15, 5);
+	bridgeLayer.rect(1711, 152, 40, 15, 5);
 
-	bridgeLayer.rect(1779, 643, 40, 15, 5);
-	bridgeLayer.rect(1821, 643, 40, 15, 5);
-	bridgeLayer.rect(1800, 660, 40, 15, 5);
+	bridgeLayer.rect(1779, 278, 40, 15, 5);
+	bridgeLayer.rect(1821, 278, 40, 15, 5);
+	bridgeLayer.rect(1800, 295, 40, 15, 5);
 
 	// Was able to fix layer issue by splitting layers into their own functions
 	//Arches
 	bridgeLayer.erase();
-	bridgeLayer.arc(0, 720, 350, 450, PI, 2*PI);
-	bridgeLayer.arc(500, 720, 350, 450, PI, 2*PI);
-	bridgeLayer.rect(0, 720, 675, 280);
-	bridgeLayer.arc(2000, 720, 350, 450, PI, 2*PI);
-	bridgeLayer.arc(1500, 720, 350, 450, PI, 2*PI);
-	bridgeLayer.rect(1325, 720, 675, 280);
+	bridgeLayer.arc(0, 355, 350, 450, PI, 2*PI);
+	bridgeLayer.arc(500, 355, 350, 450, PI, 2*PI);
+	bridgeLayer.rect(0, 355, 675, 280);
+	bridgeLayer.arc(2000, 355, 350, 450, PI, 2*PI);
+	bridgeLayer.arc(1500, 355, 350, 450, PI, 2*PI);
+	bridgeLayer.rect(1325, 355, 675, 280);
 	bridgeLayer.noErase();
 
 	// Collumns
 	bridgeLayer.fill(94, 66, 148);
-	bridgeLayer.rect(185, 720, 130, 20);
-	bridgeLayer.rect(190, 740, 120, 20);
-	bridgeLayer.rect(195, 760, 110, 140);
-	bridgeLayer.rect(1685, 720, 130, 20);
-	bridgeLayer.rect(1690, 740, 120, 20);
-	bridgeLayer.rect(1695, 760, 110, 140);
+	bridgeLayer.rect(185, 355, 130, 20);
+	bridgeLayer.rect(190, 375, 120, 20);
+	bridgeLayer.rect(195, 395, 110, 140);
+	bridgeLayer.rect(1685, 355, 130, 20);
+	bridgeLayer.rect(1690, 375, 120, 20);
+	bridgeLayer.rect(1695, 395, 110, 140);
 
 	bridgeLayer.fill(123, 91, 176);
-	bridgeLayer.rect(188, 723, 127, 17);
-	bridgeLayer.rect(193, 743, 117, 17);
-	bridgeLayer.rect(198, 763, 107, 137);
-	bridgeLayer.rect(1688, 723, 127, 17);
-	bridgeLayer.rect(1693, 743, 117, 17);
-	bridgeLayer.rect(1698, 763, 107, 137);
+	bridgeLayer.rect(188, 358, 127, 17);
+	bridgeLayer.rect(193, 378, 117, 17);
+	bridgeLayer.rect(198, 398, 107, 137);
+	bridgeLayer.rect(1688, 358, 127, 17);
+	bridgeLayer.rect(1693, 378, 117, 17);
+	bridgeLayer.rect(1698, 398, 107, 137);
 
 	bridgeLayer.fill(94, 66, 148);
-	bridgeLayer.rect(204, 767, 4, 127, 5);
-	bridgeLayer.rect(214, 767, 4, 127, 5);
-	bridgeLayer.rect(224, 767, 4, 127, 5);
-	bridgeLayer.rect(234, 767, 4, 127, 5);
-	bridgeLayer.rect(244, 767, 4, 127, 5);
-	bridgeLayer.rect(254, 767, 4, 127, 5);
-	bridgeLayer.rect(264, 767, 4, 127, 5);
-	bridgeLayer.rect(274, 767, 4, 127, 5);
-	bridgeLayer.rect(284, 767, 4, 127, 5);
-	bridgeLayer.rect(294, 767, 4, 127, 5);
-	bridgeLayer.rect(1704, 767, 4, 127, 5);
-	bridgeLayer.rect(1714, 767, 4, 127, 5);
-	bridgeLayer.rect(1724, 767, 4, 127, 5);
-	bridgeLayer.rect(1734, 767, 4, 127, 5);
-	bridgeLayer.rect(1744, 767, 4, 127, 5);
-	bridgeLayer.rect(1754, 767, 4, 127, 5);
-	bridgeLayer.rect(1764, 767, 4, 127, 5);
-	bridgeLayer.rect(1774, 767, 4, 127, 5);
-	bridgeLayer.rect(1784, 767, 4, 127, 5);
-	bridgeLayer.rect(1794, 767, 4, 127, 5);
+	bridgeLayer.rect(204, 402, 4, 127, 5);
+	bridgeLayer.rect(214, 402, 4, 127, 5);
+	bridgeLayer.rect(224, 402, 4, 127, 5);
+	bridgeLayer.rect(234, 402, 4, 127, 5);
+	bridgeLayer.rect(244, 402, 4, 127, 5);
+	bridgeLayer.rect(254, 402, 4, 127, 5);
+	bridgeLayer.rect(264, 402, 4, 127, 5);
+	bridgeLayer.rect(274, 402, 4, 127, 5);
+	bridgeLayer.rect(284, 402, 4, 127, 5);
+	bridgeLayer.rect(294, 402, 4, 127, 5);
+	bridgeLayer.rect(1704, 402, 4, 127, 5);
+	bridgeLayer.rect(1714, 402, 4, 127, 5);
+	bridgeLayer.rect(1724, 402, 4, 127, 5);
+	bridgeLayer.rect(1734, 402, 4, 127, 5);
+	bridgeLayer.rect(1744, 402, 4, 127, 5);
+	bridgeLayer.rect(1754, 402, 4, 127, 5);
+	bridgeLayer.rect(1764, 402, 4, 127, 5);
+	bridgeLayer.rect(1774, 402, 4, 127, 5);
+	bridgeLayer.rect(1784, 402, 4, 127, 5);
+	bridgeLayer.rect(1794, 402, 4, 127, 5);	
 }
 
 function waterfall(){
@@ -308,63 +334,59 @@ function waterfall(){
 	noStroke();
 
 	// Waterfall
-	fill(222, 108, 144);
-	rect(880, 390, 240, 510, 20);
+	fill(222, 108, 144);      // localised coordinates adjusted to match bridge
+	rect(880, 25, 240, 510, 20);
 
 	fill(241, 145, 170);
-	rect(880, 460, 20, 100, 10);
-	rect(900, 490, 20, 40, 10);
-	rect(920, 450, 20, 80, 10);
-	rect(940, 470, 20, 30, 10);
-	rect(960, 450, 20, 70, 10);
-	rect(980, 490, 20, 30, 10);
-	rect(1000, 490, 20, 40, 10);
-	rect(1020, 450, 20, 80, 10);
-	rect(1040, 480, 20, 30, 10);
-	rect(1060, 460, 20, 70, 10);
-	rect(1080, 500, 20, 30, 10);
-	rect(1100, 470, 20, 80, 10);
+	rect(880, 95, 20, 100, 10);
+	rect(900, 125, 20, 40, 10);
+	rect(920, 85, 20, 80, 10);
+	rect(940, 105, 20, 30, 10);
+	rect(960, 85, 20, 70, 10);
+	rect(980, 125, 20, 30, 10);
+	rect(1000, 125, 20, 40, 10);
+	rect(1020, 85, 20, 80, 10);
+	rect(1040, 115, 20, 30, 10);
+	rect(1060, 95, 20, 70, 10);
+	rect(1080, 135, 20, 30, 10);
+	rect(1100, 105, 20, 80, 10);
 
-	rect(880, 630, 20, 40, 10);
-	rect(900, 600, 20, 100, 10);
-	rect(920, 640, 20, 30, 10);
-	rect(940, 630, 20, 90, 10);
-	rect(960, 610, 20, 60, 10);
-	rect(980, 630, 20, 80, 10);
-	rect(1000, 660, 20, 50, 10);
-	rect(1020, 640, 20, 40, 10);
-	rect(1040, 620, 20, 50, 10);
-	rect(1060, 650, 20, 60, 10);
-	rect(1080, 610, 20, 70, 10);
-	rect(1100, 640, 20, 40, 10);
+	rect(880, 265, 20, 40, 10);
+	rect(900, 235, 20, 100, 10);
+	rect(920, 275, 20, 30, 10);
+	rect(940, 265, 20, 90, 10);
+	rect(960, 245, 20, 60, 10);
+	rect(980, 265, 20, 80, 10);
+	rect(1000, 295, 20, 50, 10);
+	rect(1020, 275, 20, 40, 10);
+	rect(1040, 255, 20, 50, 10);
+	rect(1060, 285, 20, 60, 10);
+	rect(1080, 245, 20, 70, 10);
+	rect(1100, 275, 20, 40, 10);
 
-	rect(880, 780, 20, 100, 10);
-	rect(900, 800, 20, 40, 10);
-	rect(920, 790, 20, 80, 10);
-	rect(940, 800, 20, 30, 10);
-	rect(960, 780, 20, 60, 10);
-	rect(980, 790, 20, 80, 10);
-	rect(1000, 800, 20, 50, 10);
-	rect(1020, 790, 20, 40, 10);
-	rect(1040, 810, 20, 30, 10);
-	rect(1060, 790, 20, 70, 10);
-	rect(1080, 790, 20, 30, 10);
-	rect(1100, 800, 20, 80, 10);
+	rect(880, 415, 20, 100, 10);
+	rect(900, 435, 20, 40, 10);
+	rect(920, 425, 20, 80, 10);
+	rect(940, 435, 20, 30, 10);
+	rect(960, 415, 20, 60, 10);
+	rect(980, 425, 20, 80, 10);
+	rect(1000, 435, 20, 50, 10);
+	rect(1020, 425, 20, 40, 10);
+	rect(1040, 445, 20, 30, 10);
+	rect(1060, 425, 20, 70, 10);
+	rect(1080, 425, 20, 30, 10);
+	rect(1100, 435, 20, 80, 10);
 
 	fill(222, 108, 144);
-	rect(900, 470, 20, 40, 10);
-	rect(960, 430, 20, 70, 10);
-	rect(1060, 410, 20, 70, 10);
-	rect(920, 620, 20, 30, 10);
-	rect(980, 570, 20, 80, 10);
-	rect(1060, 610, 20, 60, 10);
-	rect(920, 730, 20, 80, 10);
-	rect(1100, 620, 20, 40, 10);
-	rect(940, 790, 20, 30, 10);
-	rect(1080, 780, 20, 30, 10);
-	rect(880, 730, 20, 100, 10);
-
-	
-	// lake
-	rect(0, 900, 2000, 100);
+	rect(900, 105, 20, 40, 10);
+	rect(960, 65, 20, 70, 10);
+	rect(1060, 45, 20, 70, 10);
+	rect(920, 255, 20, 30, 10);
+	rect(980, 205, 20, 80, 10);
+	rect(1060, 245, 20, 60, 10);
+	rect(920, 365, 20, 80, 10);
+	rect(1100, 255, 20, 40, 10);
+	rect(940, 425, 20, 30, 10);
+	rect(1080, 415, 20, 30, 10);
+	rect(880, 365, 20, 100, 10);
 }
