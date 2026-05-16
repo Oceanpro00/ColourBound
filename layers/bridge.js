@@ -102,14 +102,23 @@ function bridge(){
 	bridgeLayer.pop();
 
 	bridgeLayer.push();
-		bridgeLayer.translate(530, 0);
+		bridgeLayer.translate(460, 0);
 		streetlights();
 	bridgeLayer.pop();
 
 	bridgeLayer.push();
-		bridgeLayer.translate(1030, 0);
+		bridgeLayer.translate(960, 0);
 		streetlights();
 	bridgeLayer.pop();
+
+	// Bridge over waterfall
+	bridgeLayer.noStroke();
+	bridgeLayer.fill(tealMain);
+	bridgeLayer.rect(884, 406, 45, 16, 5);
+	bridgeLayer.rect(931, 406, 45, 16, 5);
+	bridgeLayer.rect(978, 406, 45, 16, 5);
+	bridgeLayer.rect(1025, 406, 45, 16, 5);
+	bridgeLayer.rect(1072, 406, 45, 16, 5);
 
 
 	// Background bridge scape
@@ -236,4 +245,5 @@ function streetlights(){
 	bridgeLayer.fill(yellowMain);
 	bridgeLayer.arc(727, 260, 20, 20, 2*PI, PI);
 	bridgeLayer.arc(813, 260, 20, 20, 2*PI, PI);
+
 }

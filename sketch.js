@@ -105,8 +105,8 @@ function draw()
 	push();
 
 		// Transform
-		scale(0.5);
-		translate(0, 970);
+		scale(0.3335);
+		translate(0, 1970);
 	
 		// Bridge
 		bridge();     // updates the new layer
@@ -119,8 +119,22 @@ function draw()
 	push();
 
 		// Transform
-		scale(0.5);
-		translate(2000, 970);
+		scale(0.3335);
+		translate(1999, 1970);
+	
+		// Bridge
+		bridge();     // updates the new layer
+		image(bridgeLayer, 0, 0);     // shows the new layer
+		// Waterfall
+		waterfall();
+
+	pop();
+
+	push();
+
+		// Transform
+		scale(0.3335);
+		translate(3998, 1970);
 	
 		// Bridge
 		bridge();     // updates the new layer
@@ -286,14 +300,23 @@ function bridge(){
 	bridgeLayer.pop();
 
 	bridgeLayer.push();
-		bridgeLayer.translate(530, 0);
+		bridgeLayer.translate(460, 0);
 		streetlights();
 	bridgeLayer.pop();
 
 	bridgeLayer.push();
-		bridgeLayer.translate(1030, 0);
+		bridgeLayer.translate(960, 0);
 		streetlights();
 	bridgeLayer.pop();
+
+	// Bridge over waterfall
+	bridgeLayer.noStroke();
+	bridgeLayer.fill(tealLight);
+	bridgeLayer.rect(884, 406, 45, 16, 5);
+	bridgeLayer.rect(931, 406, 45, 16, 5);
+	bridgeLayer.rect(978, 406, 45, 16, 5);
+	bridgeLayer.rect(1025, 406, 45, 16, 5);
+	bridgeLayer.rect(1072, 406, 45, 16, 5);
 
 
 	// Background bridge scape
@@ -420,6 +443,7 @@ function streetlights(){
 	bridgeLayer.fill(yellowMain);
 	bridgeLayer.arc(727, 260, 20, 20, 2*PI, PI);
 	bridgeLayer.arc(813, 260, 20, 20, 2*PI, PI);
+
 }
 
 function waterfall(){
