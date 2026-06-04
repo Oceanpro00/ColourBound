@@ -99,8 +99,6 @@ function draw()
 	// Sky/ BG
 	styled_background();
 
-	
-
 	// Bridge + Waterfall Scaled/ Multiplied
 	push();
 
@@ -311,7 +309,7 @@ function bridge(){
 
 	// Bridge over waterfall
 	bridgeLayer.noStroke();
-	bridgeLayer.fill(tealLight);
+	bridgeLayer.fill(outlineDark);
 	bridgeLayer.rect(884, 406, 45, 16, 5);
 	bridgeLayer.rect(931, 406, 45, 16, 5);
 	bridgeLayer.rect(978, 406, 45, 16, 5);
