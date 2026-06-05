@@ -1,3 +1,6 @@
+// Declaring Global Variables - Variables
+var planet_Bob;
+
 // colors
 // Yellow
 let yellowLight;
@@ -33,6 +36,9 @@ let navyDark;
 function setup()
 {
     createCanvas(500, 500);
+
+    // initializing Variables
+    planet_Bob = 10;
 
     // colors
 	// Yellow
@@ -70,24 +76,55 @@ function setup()
 
 function draw()
 {
+    background(0, 0, 0);
     translate(width/2, height/2);
 
     // Orange Star
     orange_Star(0, 0);
+
+    // Planet Bob Animation
+    if(frameCount % 180 == 0)    // runs every 3 seconds 
+        {
+            if(planet_Bob == 10)
+            {
+                planet_Bob = 0
+            }
+            else
+            {
+                planet_Bob = 10
+            }
+        }
 }
 
 function orange_Star(input_x, input_y)
 {
     push();
-        translate(input_x, input_y);
-        fill(orangeMain);
+        translate(input_x, input_y + planet_Bob);
         noStroke();
 
         // Planet
-        beginClip();
-            ellipse(0, 0, 300, 300);
-        endClip();
+        push();
+            beginClip();
+                ellipse(0, 0, 300, 300);
+            endClip();
 
-        rect(-(width/2), -(height/2), width, height);
+
+            fill(orangeMain);
+            rect(-(width/2), -(height/2), width, height);
+            fill(orangeLight);
+            ellipse(-30, -20, 300, 300);
+            rotate(radians(45));
+            fill(red(orangeMain), green(orangeMain), blue(orangeMain), 100);
+            ellipse(-70, 0, 130, 180);
+        pop();
+        
+        push();
+            rotate(radians(-25));
+            noFill();
+            stroke(orangeDark);
+            strokeWeight(16);
+            arc(0, 0, 500, 140, radians(340), radians(200));
+        pop();
     pop();
+
 }
