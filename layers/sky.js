@@ -163,13 +163,13 @@ function draw()
         spinning_Sun(-500, -650, 1000);
 
         // moon
-        moon(850, 400, 150, -45);
+        moon(500, 700, 150, 150);
 
         // Orange Star
         orange_Star(1050, 100, 100);
 
         // Light Black Hole
-        light_Black_Hole(500, 700, 280, 150);
+        light_Black_Hole(850, 400, 280, -265);
 
         // Habitable Planet
         habitable_Planet(0, 700, 100);
