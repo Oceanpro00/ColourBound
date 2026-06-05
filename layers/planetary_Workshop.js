@@ -89,7 +89,7 @@ function draw()
     translate(width/2, height/2);
 
     // Orange Star
-    orange_Star(0, 0, 500);
+    // orange_Star(0, 0, 500);
 
     // Light Black Hole
     // light_Black_Hole(0, 0, 500);
@@ -100,16 +100,22 @@ function draw()
     // Black Hole
     // black_Hole(0, 0, 550);
 
+    // Regular Planet
+    regular_Planet(-150, -150, 150, purpleLight, purpleMain, purpleDark);
+    regular_Planet(-150, 150, 150, pinkLight, pinkMain, pinkDark);
+    regular_Planet(150, -150, 150, tealLight, tealMain, tealDark);
+    regular_Planet(150, 150, 150, yellowLight, yellowMain, yellowDark);
+
     // Planet Bob Animation
     if(frameCount % 180 == 0)    // runs every 3 seconds 
     {
         if(planet_Bob == 10)
         {
-            planet_Bob = 0
+            planet_Bob = 0;
         }
         else
         {
-            planet_Bob = 10
+            planet_Bob = 10;
         }
     }
     
@@ -122,7 +128,52 @@ function draw()
 	pop();
 }
 
-function black_Hole (input_x, input_y, size)
+function regular_Planet(input_x, input_y, size, color_light, color_main, color_dark)
+{
+    push();
+        translate(input_x, input_y + planet_Bob);
+        scale(size/ 450);
+
+        // Planetary Base
+        beginClip();
+            ellipse(0, 0, 450, 450);
+        endClip();
+        fill(color_dark)
+        ellipse(0, 0, 450, 450);
+
+        // planet lines
+        rotate(radians(-45));
+        stroke(color_main);
+        strokeWeight(50);
+        line(-200, -50, -200, -230);
+        line(-150, -80, -150, -230);
+        line(-100, 0, -100, -230);
+        line(-50, 30, -50, -230);
+        line(0, -50, 0, -230);
+        line(50, 0, 50, -230);
+        line(100, 30, 100, -230);
+        line(150, -30, 150, -230);
+        line(200, 0, 200, -230);
+
+        stroke(color_dark);
+        line(-150, -70, -150, 230);
+        line(0, -50, 0, 230);
+        line(50, -20, 50, 230);
+        line(150, -50, 150, 230);
+
+        stroke(color_main);
+        line(100, 130, 100, 110);
+        line(-100, 110, -100, 90);
+
+        noFill();
+        strokeWeight(30);
+        stroke(color_light);
+        ellipse(0, 0, 450, 450);
+        
+    pop();
+}
+
+function black_Hole(input_x, input_y, size)
 {
     push();
         translate(input_x, input_y);
