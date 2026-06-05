@@ -1,5 +1,11 @@
 // Declaring Global Variables - Variables
 var sky_Spin;
+var auburn_sky_alpha;
+var night_sky_alpha;
+var planet_Bob;
+var black_hole_spin;
+var light_black_hole_spin;
+var habitable_cloud_spin;
 
 // Declaring Global Variables - Objects
 var star;
@@ -47,6 +53,12 @@ function setup()
 
     // initializing Variables
     sky_Spin = 0;
+    auburn_sky_alpha = 0;
+    night_sky_alpha = 0;
+    planet_Bob = 10;
+    black_hole_spin = 0;
+    light_black_hole_spin = 0;
+    habitable_cloud_spin = 0;
 
     // initializing Objects
     sun_Spin = {
@@ -93,17 +105,17 @@ function setup()
         pos_y: 0,
         scaled: 1.0
     }
-    for(let i = 0; i < 70; i++){
+    for(let i = 0; i < 100; i++){     // populating the night sky extra
         starArray.push({
-            star_x: random(-(width/2), width/2),
-            star_y: random(100, height/2),    // pulling from week 5 hack it exercise
+            star_x: random(-(width/2 + 200), width/2 + 200),
+            star_y: random(100, height/2 + 200),    // pulling from week 5 hack it exercise
             star_scaled: random()
         })
     }
-    for(let i = 0; i < 70; i++){     // populating the night sky extra
+    for(let i = 0; i < 100; i++){     
         starArray.push({
-            star_x: random(-(width/2), width/2),
-            star_y: random(-(height/2), height/2),
+            star_x: random(-(width/2 + 200), width/2 + 200),
+            star_y: random(-(height/2 + 200), height/2 + 200),
             star_scaled: random()
         })
     }
@@ -113,48 +125,81 @@ function draw()
 {
 	background(tealLight); 
 
-    // sky     // pulling from week 5 hack it exercise
-    push();
-        // sky spin
-        if(sky_Spin >= 360){
-            sky_Spin = 0;
-        }
-        else{
-            sky_Spin += 0.025;
-        }
+    // sky spin
+    // if(sky_Spin >= 360){
+    //     sky_Spin = 0;
+    // }
+    // else{
+    //     sky_Spin += 0.025;
+    // }
 
+    // sky color Background     // pulling from week 5 hack it exercise
+    if(sky_Spin >= 280)
+    {
+        night_sky_alpha = map(sky_Spin, 290, 320, 255, 0)
+        auburn_sky_alpha = map(sky_Spin, 340, 360, 120, 0)
+    }
+    else
+    {
+        auburn_sky_alpha = map(sky_Spin, 60, 85, 0, 120)
+        night_sky_alpha = map(sky_Spin, 110, 140, 0, 255)
+    }
+    fill(red(orangeMain), green(orangeMain), blue(orangeMain), auburn_sky_alpha);
+    rect(0, 0, width, height);
+    fill(red(navyDark), green(navyDark), blue(navyDark), night_sky_alpha);
+    rect(0, 0, width, height);
+
+    // sky
+    push();
         translate(width/2, height/2);
         rotate(radians(sky_Spin))
-        
-        // sun
-        spinning_Sun(-300, -400, 1000);
 
         // stars
         for(let i = 0; i < 140; i++){
             stars(starArray[i].star_x, starArray[i].star_y, starArray[i].star_scaled);
         }
 
+        // sun
+        spinning_Sun(-500, -650, 1000);
+
         // moon
-        noStroke();
-        fill(201,201,201);
-        ellipse(232, 332, 90, 90);
+        moon(850, 400, 150, -45);
+
+        // Orange Star
+        orange_Star(750, 100, 100);
+
+        // Light Black Hole
+        light_Black_Hole(500, 700, 280, 110);
+
+        // Habitable Planet
+        habitable_Planet(0, 700, 100);
+
+        // Black Hole
+        black_Hole(150, 900, 80);
+
+        // Regular Planet
         push();
-            fill(229,229,229);
-            translate(232, 332);
-            rotate(radians(300));
-            ellipse(0, 0, 40, 90);
-            arc(0, 0, 90, 90, radians(90), radians(270));
+        regular_Planet(550, 450, 100, purpleLight, purpleMain, purpleDark, 90);
+        regular_Planet(800, -500, 120, pinkLight, pinkMain, pinkDark, 55);
+        regular_Planet(600, -350, 80, tealLight, tealMain, tealDark, 60);
+        regular_Planet(-580, 750, 100, yellowLight, yellowMain, yellowDark, 145);
+        regular_Planet(-400, 850, 60, orangeLight, orangeMain, orangeDark, 130);
         pop();
-        stroke(229,229,229);
-        strokeWeight(1);
-        ellipse(238, 332, 10, 10);
-        ellipse(223, 358, 20, 20);
-        ellipse(209, 312, 5, 5);
-        ellipse(246, 356, 9, 9);
-        ellipse(233, 322, 5, 5);
-        ellipse(218, 345, 7, 7);
-        ellipse(258, 328, 8, 8);
+        
     pop();
+
+    // Planet Bob Animation
+    if(frameCount % 180 == 0)    // runs every 3 seconds 
+    {
+        if(planet_Bob == 10)
+        {
+            planet_Bob = 0;
+        }
+        else
+        {
+            planet_Bob = 10;
+        }
+    }
 
     // helpful mouse pointer brought in from sleuth
 	push();
@@ -318,5 +363,299 @@ function spinning_Sun(input_x, input_y, size)
             arc(0, 0, 1650, 1650, radians(325), radians(380));
         pop();
 
+    pop();
+}
+
+function moon(input_x, input_y, size, deg)
+{
+    push();
+        translate(input_x, input_y);
+        scale(size/90);
+        rotate(radians(deg));
+        translate(0, planet_Bob);
+
+        // planetary body
+        noStroke();
+        fill(201,201,201);
+        ellipse(0, 0, 90, 90);
+        push();
+            fill(229,229,229);
+            rotate(radians(300));
+            ellipse(0, 0, 40, 90);
+            arc(0, 0, 90, 90, radians(90), radians(270));
+        pop();
+        stroke(229,229,229);
+        strokeWeight(1);
+        ellipse(6, 0, 10, 10);
+        ellipse(-9, 26, 20, 20);
+        ellipse(-23, -20, 5, 5);
+        ellipse(14, 24, 9, 9);
+        ellipse(1, -10, 5, 5);
+        ellipse(-14, 13, 7, 7);
+        ellipse(26, -4, 8, 8);
+    pop();
+}
+
+function black_Hole(input_x, input_y, size)
+{
+    push();
+        translate(input_x, input_y);
+        scale(size / 450);
+        translate(0, planet_Bob);
+
+        // spinning particles
+        black_hole_spin += 0.05;
+
+        // Black Hole Base
+        fill(red(purpleDark), green(purpleDark), blue(purpleDark), 150);
+        ellipse(0, 0, 450, 450);
+        fill(paperCream);
+        ellipse(0, 0, 400, 400);
+        fill(pinkMain);
+        ellipse(0, 0, 390, 390);
+
+        // Black Hole Core
+        push();
+            beginClip();
+                ellipse(0, 0, 380, 380);
+            endClip();
+            fill(navyDark);
+            ellipse(0, 0, 380, 380);
+            fill(0);
+            ellipse(-40, 40, 380, 380);
+            noFill();
+            stroke(0);
+            strokeWeight(30);
+            ellipse(0, 0, 380, 380);
+        pop();
+
+        // Particles
+        noFill();
+        stroke(paperCream);
+        strokeWeight(10);
+        for(let i = 0; i <= 360; i += 20)
+        {
+            arc(0, 0, 430, 430, radians(0 + i + black_hole_spin), radians(1 + i + black_hole_spin));
+        }
+    pop();
+}
+
+function habitable_Planet(input_x, input_y, size)
+{
+    push();
+        translate(input_x, input_y);
+        scale(size/440)
+        rotate(radians(180));
+        translate(0, planet_Bob);
+        push();
+
+            // Base Shape
+            beginClip();
+                ellipse(0, 0, 400, 400)
+            endClip()
+            fill(tealDark);
+            ellipse(0, 0, 400, 400);
+
+            // Bright Stripes
+            stroke(tealLight);
+            strokeWeight(50);
+            line(180, -100, 210, -100);
+            line(185, -50, 210, -50);
+            line(160, 0, 210, 0);
+            line(100, 50, 210, 50);
+            line(30, 100, 210, 100);
+            line(-80, 150, 210, 150);
+            line(-150, 200, 210, 200);
+
+            line(-210, -200, 80, -200);
+            line(-210, -150, 10, -150);
+            line(-210, -100, -100, -100);
+            line(-210, -50, -150, -50);
+            line(-210, 0, -180, 0);
+            line(-210, 5, -200, 50);
+        pop();
+
+        // Cloud Layer
+        push();
+            beginClip();
+                ellipse(0, 0, 440, 440);
+            endClip();
+
+            if(frameCount % 25 == 0)
+            {
+                if(habitable_cloud_spin >= 500)
+                {
+                    habitable_cloud_spin = 0;
+                }
+                else
+                {
+                    habitable_cloud_spin += 4;
+                }
+            }
+
+            stroke(paperCream);
+            strokeWeight(50);
+
+            line(-520 + habitable_cloud_spin, 25, -450 + habitable_cloud_spin, 25);
+            line(-580 + habitable_cloud_spin, 50, -490 + habitable_cloud_spin, 50);
+            line(-20 + habitable_cloud_spin, 25, 40 + habitable_cloud_spin, 25);
+            line(-80 + habitable_cloud_spin, 50, 0 + habitable_cloud_spin, 50);
+
+            line(-280 + habitable_cloud_spin, -125, -220 + habitable_cloud_spin, -125);
+            line(-320 + habitable_cloud_spin, -100, -160 + habitable_cloud_spin, -100);
+            line(-340 + habitable_cloud_spin, -75, -210 + habitable_cloud_spin, -75);
+            line(220 + habitable_cloud_spin, -125, 280 + habitable_cloud_spin, -125);
+            line(160 + habitable_cloud_spin, -100, 340 + habitable_cloud_spin, -100);
+            line(180 + habitable_cloud_spin, -75, 290 + habitable_cloud_spin, -75);
+
+            line(-440 + habitable_cloud_spin, 150, -410 + habitable_cloud_spin, 150);
+            line(-470 + habitable_cloud_spin, 175, -400 + habitable_cloud_spin, 175);
+            line(60 + habitable_cloud_spin, 150, 90 + habitable_cloud_spin, 150);
+            line(30 + habitable_cloud_spin, 175, 100 + habitable_cloud_spin, 175);
+        pop();
+
+    pop();
+}
+
+function light_Black_Hole(input_x, input_y, size, deg)
+{
+    push();
+        translate(input_x, input_y);
+        scale(size / 500)
+        rotate(radians(deg));
+        translate(0, planet_Bob);
+        rotate(radians(15));       // tilted bob
+
+        // spinning rings
+        light_black_hole_spin += 0.2
+
+        // outer rings
+        push();
+            beginClip({invert : true});
+                ellipse(0, 0, 300, 90);
+            endClip();
+
+            fill(red(tealLight), green(tealLight), blue(tealLight), 100)
+            ellipse(0, 0, 450, 135);
+            ellipse(0, 0, 550, 165);
+            noFill();
+            stroke(tealMain);
+            strokeWeight(3);
+            arc(0, 0, 450, 135, radians(10 + light_black_hole_spin), radians(75 + light_black_hole_spin))
+            arc(0, 0, 450, 135, radians(130 + light_black_hole_spin), radians(150 + light_black_hole_spin))
+            arc(0, 0, 450, 135, radians(170 + light_black_hole_spin), radians(190 + light_black_hole_spin))
+            arc(0, 0, 450, 135, radians(240 + light_black_hole_spin), radians(330 + light_black_hole_spin))
+            arc(0, 0, 550, 165, radians(45 + light_black_hole_spin), radians(135 + light_black_hole_spin))
+            arc(0, 0, 550, 165, radians(150 + light_black_hole_spin), radians(205 + light_black_hole_spin))
+            arc(0, 0, 550, 165, radians(260 + light_black_hole_spin), radians(300 + light_black_hole_spin))
+            arc(0, 0, 550, 165, radians(340 + light_black_hole_spin), radians(10 + light_black_hole_spin))
+        pop();
+
+        // inner rings
+        fill(red(pinkLight), green(pinkLight), blue(pinkLight), 100)
+        ellipse(0, 0, 200, 60)
+        ellipse(0, 0, 300, 90)
+        noFill();
+        stroke(pinkMain);
+        strokeWeight(3);
+        arc(0, 0, 200, 60, radians(10 + light_black_hole_spin), radians(75 + light_black_hole_spin))
+        arc(0, 0, 200, 60, radians(130 + light_black_hole_spin), radians(150 + light_black_hole_spin))
+        arc(0, 0, 200, 60, radians(170 + light_black_hole_spin), radians(190 + light_black_hole_spin))
+        arc(0, 0, 200, 60, radians(240 + light_black_hole_spin), radians(330 + light_black_hole_spin))
+        arc(0, 0, 300, 90, radians(45 + light_black_hole_spin), radians(135 + light_black_hole_spin))
+        arc(0, 0, 300, 90, radians(150 + light_black_hole_spin), radians(205 + light_black_hole_spin))
+        arc(0, 0, 300, 90, radians(260 + light_black_hole_spin), radians(300 + light_black_hole_spin))
+        arc(0, 0, 300, 90, radians(340 + light_black_hole_spin), radians(10 + light_black_hole_spin))
+
+        // core
+        noStroke();
+        fill(255);
+        ellipse(0, 0, 100, 30);
+        fill(255, 255, 255, 100)
+        arc(0, 0, 100, 100, radians(180), radians(360));
+    pop();
+}
+
+function orange_Star(input_x, input_y, size)
+{
+    push();
+        translate(input_x, input_y);
+        scale(size / 450);
+        rotate(radians(90));
+        translate(0, planet_Bob);      // this second translate makes sure bob is oriented correctly
+        noStroke();
+
+        // Base Planet
+        push();
+            beginClip();
+                ellipse(0, 0, 300, 300);
+            endClip();
+
+
+            fill(orangeMain);
+            rect(-(width/2), -(height/2), width, height);
+            fill(orangeLight);
+            ellipse(-30, -20, 300, 300);
+            rotate(radians(45));
+            fill(red(orangeMain), green(orangeMain), blue(orangeMain), 100);
+            ellipse(-70, 0, 130, 180);
+        pop();
+
+        // Planet Hoop
+        push();
+            rotate(radians(-25));
+            noFill();
+            stroke(orangeDark);
+            strokeWeight(16);
+            arc(0, 0, 500, 140, radians(340), radians(200));
+        pop();
+    pop();
+
+}
+
+function regular_Planet(input_x, input_y, size, color_light, color_main, color_dark, deg)
+{
+    push();
+        translate(input_x, input_y);
+        scale(size/ 450);
+        rotate(radians(deg));
+        translate(0, planet_Bob);
+
+        // Planetary Base
+        beginClip();
+            ellipse(0, 0, 450, 450);
+        endClip();
+        fill(color_dark)
+        ellipse(0, 0, 450, 450);
+
+        // planet lines
+        rotate(radians(-45));
+        stroke(color_main);
+        strokeWeight(50);
+        line(-200, -50, -200, -230);
+        line(-150, -80, -150, -230);
+        line(-100, 0, -100, -230);
+        line(-50, 30, -50, -230);
+        line(0, -50, 0, -230);
+        line(50, 0, 50, -230);
+        line(100, 30, 100, -230);
+        line(150, -30, 150, -230);
+        line(200, 0, 200, -230);
+
+        stroke(color_dark);
+        line(-150, -70, -150, 230);
+        line(0, -50, 0, 230);
+        line(50, -20, 50, 230);
+        line(150, -50, 150, 230);
+
+        stroke(color_main);
+        line(100, 130, 100, 110);
+        line(-100, 110, -100, 90);
+
+        noFill();
+        strokeWeight(30);
+        stroke(color_light);
+        ellipse(0, 0, 450, 450);
+        
     pop();
 }
