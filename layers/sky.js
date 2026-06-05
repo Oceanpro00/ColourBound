@@ -166,24 +166,24 @@ function draw()
         moon(850, 400, 150, -45);
 
         // Orange Star
-        orange_Star(750, 100, 100);
+        orange_Star(1050, 100, 100);
 
         // Light Black Hole
-        light_Black_Hole(500, 700, 280, 110);
+        light_Black_Hole(500, 700, 280, 150);
 
         // Habitable Planet
         habitable_Planet(0, 700, 100);
 
         // Black Hole
-        black_Hole(150, 900, 80);
+        black_Hole(150, 1000, 80);
 
         // Regular Planet
         push();
         regular_Planet(550, 450, 100, purpleLight, purpleMain, purpleDark, 90);
-        regular_Planet(800, -500, 120, pinkLight, pinkMain, pinkDark, 55);
-        regular_Planet(600, -350, 80, tealLight, tealMain, tealDark, 60);
-        regular_Planet(-580, 750, 100, yellowLight, yellowMain, yellowDark, 145);
-        regular_Planet(-400, 850, 60, orangeLight, orangeMain, orangeDark, 130);
+        regular_Planet(800, -300, 120, pinkLight, pinkMain, pinkDark, 55);
+        regular_Planet(600, -50, 80, tealLight, tealMain, tealDark, 80);
+        regular_Planet(-380, 750, 100, yellowLight, yellowMain, yellowDark, 145);
+        regular_Planet(-400, 450, 60, orangeLight, orangeMain, orangeDark, 130);
         pop();
         
     pop();

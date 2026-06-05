@@ -490,7 +490,7 @@ function grand_Sky()
         sky_Spin = 0;
     }
     else{
-        sky_Spin += 0.06;
+        sky_Spin += 0.02;
     }
 
 	// sky color Background     // pulling from week 5 hack it exercise
@@ -526,7 +526,7 @@ function grand_Sky()
         moon(850, 400, 150, -45);
 
         // Orange Star
-        orange_Star(750, 100, 100);
+        orange_Star(1050, 100, 100);
 
         // Light Black Hole
         light_Black_Hole(500, 700, 280, 150);
@@ -542,7 +542,7 @@ function grand_Sky()
         regular_Planet(550, 450, 100, purpleLight, purpleMain, purpleDark, 90);
         regular_Planet(800, -300, 120, pinkLight, pinkMain, pinkDark, 55);
         regular_Planet(600, -50, 80, tealLight, tealMain, tealDark, 80);
-        regular_Planet(-480, 850, 100, yellowLight, yellowMain, yellowDark, 145);
+        regular_Planet(-380, 750, 100, yellowLight, yellowMain, yellowDark, 145);
         regular_Planet(-400, 450, 60, orangeLight, orangeMain, orangeDark, 130);
         pop();
         
