@@ -116,12 +116,12 @@ function draw()
     // sky     // pulling from week 5 hack it exercise
     push();
         // sky spin
-        // if(sky_Spin >= 360){
-        //     sky_Spin = 0;
-        // }
-        // else{
-        //     sky_Spin += 0.03;
-        // }
+        if(sky_Spin >= 360){
+            sky_Spin = 0;
+        }
+        else{
+            sky_Spin += 0.025;
+        }
 
         translate(width/2, height/2);
         rotate(radians(sky_Spin))
