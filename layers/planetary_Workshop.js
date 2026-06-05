@@ -1,5 +1,9 @@
 // Declaring Global Variables - Variables
 var planet_Bob;
+var black_hole_spin;
+
+// Declaring Global Variables - Objects
+
 
 // colors
 // Yellow
@@ -35,10 +39,11 @@ let navyDark;
 
 function setup()
 {
-    createCanvas(500, 500);
+    createCanvas(700, 700);
 
     // initializing Variables
     planet_Bob = 10;
+    black_hole_spin = 0
 
     // colors
 	// Yellow
@@ -80,7 +85,10 @@ function draw()
     translate(width/2, height/2);
 
     // Orange Star
-    orange_Star(0, 0);
+    // orange_Star(0, 0);
+
+    // Light Black Hole
+    // light_Black_Hole(0, 0);
 
     // Planet Bob Animation
     if(frameCount % 180 == 0)    // runs every 3 seconds 
@@ -94,6 +102,62 @@ function draw()
                 planet_Bob = 10
             }
         }
+}
+
+function light_Black_Hole(input_x, input_y)
+{
+    push();
+        translate(input_x, input_y + planet_Bob);
+        rotate(radians(15));
+
+        // spinning rings
+        black_hole_spin += 0.2
+
+        // outer rings
+        push();
+            beginClip({invert : true});
+                ellipse(0, 0, 300, 90);
+            endClip();
+
+            fill(red(tealLight), green(tealLight), blue(tealLight), 100)
+            ellipse(0, 0, 450, 135);
+            ellipse(0, 0, 550, 165);
+            noFill();
+            stroke(tealMain);
+            strokeWeight(3);
+            arc(0, 0, 450, 135, radians(10 + black_hole_spin), radians(75 + black_hole_spin))
+            arc(0, 0, 450, 135, radians(130 + black_hole_spin), radians(150 + black_hole_spin))
+            arc(0, 0, 450, 135, radians(170 + black_hole_spin), radians(190 + black_hole_spin))
+            arc(0, 0, 450, 135, radians(240 + black_hole_spin), radians(330 + black_hole_spin))
+            arc(0, 0, 550, 165, radians(45 + black_hole_spin), radians(135 + black_hole_spin))
+            arc(0, 0, 550, 165, radians(150 + black_hole_spin), radians(205 + black_hole_spin))
+            arc(0, 0, 550, 165, radians(260 + black_hole_spin), radians(300 + black_hole_spin))
+            arc(0, 0, 550, 165, radians(340 + black_hole_spin), radians(10 + black_hole_spin))
+        pop();
+
+        // inner rings
+        fill(red(pinkLight), green(pinkLight), blue(pinkLight), 100)
+        ellipse(0, 0, 200, 60)
+        ellipse(0, 0, 300, 90)
+        noFill();
+        stroke(pinkMain);
+        strokeWeight(3);
+        arc(0, 0, 200, 60, radians(10 + black_hole_spin), radians(75 + black_hole_spin))
+        arc(0, 0, 200, 60, radians(130 + black_hole_spin), radians(150 + black_hole_spin))
+        arc(0, 0, 200, 60, radians(170 + black_hole_spin), radians(190 + black_hole_spin))
+        arc(0, 0, 200, 60, radians(240 + black_hole_spin), radians(330 + black_hole_spin))
+        arc(0, 0, 300, 90, radians(45 + black_hole_spin), radians(135 + black_hole_spin))
+        arc(0, 0, 300, 90, radians(150 + black_hole_spin), radians(205 + black_hole_spin))
+        arc(0, 0, 300, 90, radians(260 + black_hole_spin), radians(300 + black_hole_spin))
+        arc(0, 0, 300, 90, radians(340 + black_hole_spin), radians(10 + black_hole_spin))
+
+        // core
+        noStroke();
+        fill(255);
+        ellipse(0, 0, 100, 30);
+        fill(255, 255, 255, 100)
+        arc(0, 0, 100, 100, radians(180), radians(360));
+    pop();
 }
 
 function orange_Star(input_x, input_y)
